@@ -1,0 +1,39 @@
+
+#explore-section{
+    height: 80vh;
+    padding:0 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8F8F8;
+    flex-wrap: wrap;
+  }
+  #explore-section .orange-button{
+    width: 10.25rem;
+    height: 3rem;
+    font-weight: 600;
+  }
+  .explore__text-wrapper{
+    box-sizing: border-box;
+    padding: 6vw;
+    width: 30vw;
+  }
+  .explore__text-wrapper .grey-text{
+    font-size:1.0625rem;
+    font-family: "Muli";
+  }
+  .explore__text-wrapper .grey-text{
+    font-family: "Inter";
+  }
+  #explore-section img{
+    width: 30vw;
+  }
+  @media (max-width: 800px) {
+
+    .explore__text-wrapper{
+      width: 100vw;
+    }
+    #explore-section img{
+      width: 80vw;
+    }
+}

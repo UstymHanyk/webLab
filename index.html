@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/style.css">
     <!-- adobe fonts(Muli) -->
     <link rel="stylesheet" href="https://use.typekit.net/gku3kiu.css">
     <!-- google fonts(Inter, Playfair Display) -->
@@ -14,19 +15,25 @@
     <!-- Font Awesome icons -->
     <script src="https://kit.fontawesome.com/adfb7865d3.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <nav>
-    <img class="logo-img" src="assets/images/logo.png" alt="">
-    <ul>
-    <li><a href="#"><b>Home</b></a></li>
-    <li><a href="#">Destinations</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Partner</a></li>
-    <li><button class="white-orange-button">Login</button></li>
-    <li><button class="orange-button">Register</button></li>
-  </ul>
-    </nav>
+        <img class="logo-img" src="assets/images/logo.png" alt="">
 
+        <ul class="hidden-menu">
+            <li><a href="#"><b>Home</b></a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Partner</a></li>
+            <li><a href="#" class="white-orange-button">Login</a></li>
+            <li><a href="#" class="orange-button">Register</a></li>
+        </ul>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-xmark"></i>
+
+        </div>
+    </nav>
 
     <header>
         <div class="header__text-box">
@@ -34,104 +41,125 @@
 
             <p>Holiday finder</p>
             <p>____</p>
-            
-            <div class="header__select-wrapper">
+
+            <form name="holiday-finder" id="holiday-finder" action="" class="header__select-wrapper">
+
                 <select>
                   <option disabled selected hidden value="">Location</option>
                   <option value="">Ukraine</option>
                   <option value="">Germany</option>
                   <option value="">Brazil</option>
                 </select>
-                
+
                 <select>
                     <option disabled selected hidden value="">Activity</option>
                     <option value="">Golf</option>
                     <option value="">Rugby</option>
                     <option value="">Fishing</option>
                   </select>
-                
-                  <select>
+
+                <select>
                     <option disabled selected hidden value="">Grade</option>
                     <option value="">High grade</option>
                     <option value="">Mid grade</option>
                     <option value="">Low grade</option>
                   </select>
-                <input type="text" id="datePicker" name="date" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')" >
+                <input type="text" id="datePicker" name="date" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </form>
+            <button type="submit" form="holiday-finder" class="orange-button">Explore</button>
 
-              </div>
-                  <button class="orange-button">Explore</button>
-              
         </div>
         <img src="assets/images/hero-image.png" alt="">
     </header>
-
 
     <section id="explore-section">
         <img src="assets/images/sub-hero-image.png" alt="">
         <div class="explore__text-wrapper">
             <h2>A new way to explore the world</h2>
-            <p class="grey-text">For decades travellers have reached for Lonely Planet books when looking to plan and execute their perfect 
-                trip, but now, they can also let Lonely Planet Experiences lead the way</p>
+            <p class="grey-text">For decades travellers have reached for Lonely Planet books when looking to plan and execute their perfect trip, but now, they can also let Lonely Planet Experiences lead the way</p>
             <button class="orange-button">Learn more</button>
-            </div>
+        </div>
     </section>
 
     <section id="destinations-section">
         <div class="destinations__content-wrapper">
-        <div class="destinations__header">
-            <h2>Featured destinations</h2>
-            <p class="orange-text">View all ></p>
-        </div>
+            <div class="destinations__header">
+                <h2>Featured destinations</h2>
+                <a href="#" class="orange-text">View all ></a>
+            </div>
 
-        <div class="destinations__cards-wrapper">
-            <div class="destinations__card">
-                <img src="assets/images/raja-ampat-destination.png" class="destinations__card__photo" alt="">
-                <div class="destinations__card__text-box">
-                <p>Raja Ampat</p>
-                <p class="grey-text">Indonesia</p> 
+            <div class="destinations__cards-wrapper">
+                <div class="destinations__card">
+                    <img src="assets/images/raja-ampat-destination.png" class="destinations__card__photo" alt="">
+                    <div class="destinations__card__text-box">
+                        <p>Raja Ampat</p>
+                        <p class="grey-text">Indonesia</p>
+                    </div>
                 </div>
-            </div>
-            <div class="destinations__card">
-                <img src="assets/images/fanjingshan-destination.png" class="destinations__card__photo" alt="">
-                <div class="destinations__card__text-box">
-                <p>Fanjingshan</p>
-                <p class="grey-text">China</p> 
+                <div class="destinations__card">
+                    <img src="assets/images/fanjingshan-destination.png" class="destinations__card__photo" alt="">
+                    <div class="destinations__card__text-box">
+                        <p>Fanjingshan</p>
+                        <p class="grey-text">China</p>
+                    </div>
                 </div>
-            </div>
-            <div class="destinations__card">
-                <img src="assets/images/vevey-destination.png" class="destinations__card__photo" alt="">
-                <div class="destinations__card__text-box">
-                <p>Vevey</p>
-                <p class="grey-text">Switzerland</p> 
+                <div class="destinations__card">
+                    <img src="assets/images/vevey-destination.png" class="destinations__card__photo" alt="">
+                    <div class="destinations__card__text-box">
+                        <p>Vevey</p>
+                        <p class="grey-text">Switzerland</p>
+                    </div>
                 </div>
-            </div><div class="destinations__card">
-                <img src="assets/images/skadar-destination.png" class="destinations__card__photo" alt="">
-                <div class="destinations__card__text-box">
-                <p>Skadar</p>
-                <p class="grey-text">Montenegro</p> 
+                <div class="destinations__card">
+                    <img src="assets/images/skadar-destination.png" class="destinations__card__photo" alt="">
+                    <div class="destinations__card__text-box">
+                        <p>Skadar</p>
+                        <p class="grey-text">Montenegro</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     <footer>
         <div class="footer__content-wrapper">
-        <div class="footer__logo-copyright-wrapper">
-            <img class="logo-img" src="assets/images/logo.png" alt="">
-            <p class="grey-text">©2020 Thousand Sunny. All rights reserved</p>
-        </div>
-        <hr>
+            <div class="footer__logo-copyright-wrapper">
+                <img class="logo-img" src="assets/images/logo.png" alt="">
+                <p class="grey-text">©2020 Thousand Sunny. All rights reserved</p>
+            </div>
+            <hr>
             <div class="footer__social-media-icons">
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-linkedin-in"></i>
-                <i class="fa-brands fa-youtube"></i>
+                <a href="#">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#">
+
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#">
+
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#">
+
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
             </div>
         </div>
-    </div>
+        </div>
     </footer>
-
+    <script>
+        function toggleMenu() {
+            const hiddenMenu = document.querySelector('.hidden-menu');
+            hiddenMenu.style.display = hiddenMenu.style.display === 'none' || hiddenMenu.style.display === '' ? 'flex' : 'none';
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            hamburgerMenu.classList.toggle('menu-open');
+        
+        }
+    </script>
 </body>
+
 </html>
