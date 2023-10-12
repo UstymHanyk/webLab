@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add Gemstone</h1>
+      <input type="text" id="gemstone-name" placeholder="Gemstone Name" />
+      <input type="number" id="gemstone-carats" placeholder="Carats" />
+      <input type="number" id="gemstone-price" placeholder="Price" />
+      <button id="save-gemstone">Save/Add</button>
+    </div>
+
+    <script>
+        class Gemstone {
+  constructor(name, carats, price) {
+    this.name = name;
+    this.carats = carats;
+    this.price = price;
+  }
+}
+
+const saveGemstoneBtn = document.getElementById('save-gemstone');
+const gemstoneNameInput = document.getElementById('gemstone-name');
+const gemstoneCaratsInput = document.getElementById('gemstone-carats');
+const gemstonePriceInput = document.getElementById('gemstone-price');
+
+function addGemstone() {
+  const name = gemstoneNameInput.value;
+  const carats = parseFloat(gemstoneCaratsInput.value);
+  const price = parseFloat(gemstonePriceInput.value);
+
+  if (!isNaN(carats) && !isNaN(price) && name) {
+    const newGemstone = new Gemstone(name, carats, price);
+
+    const existingData = JSON.parse(localStorage.getItem('gemstones')) || [];
+    existingData.push(newGemstone);
+    localStorage.setItem('gemstones', JSON.stringify(existingData));
+
+    window.location.href = 'index.html';
+  } else {
+    alert('Invalid input. Please provide valid gemstone name, carats, and price.');
+  }
+}
+
+saveGemstoneBtn.addEventListener('click', addGemstone);
+
+    </script>
+  </body>
+</html>
