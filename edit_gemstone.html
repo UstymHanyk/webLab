@@ -11,52 +11,62 @@
       <input type="text" id="edit-gemstone-name" placeholder="Gemstone Name" />
       <input type="number" id="edit-gemstone-carats" placeholder="Carats" />
       <input type="number" id="edit-gemstone-price" placeholder="Price" />
-      <button id="save-edited-gemstone">Save Changes</button>
+      <button id="save-edited-gemstone" onclick="saveEditedGemstone()">Save Changes</button>
     </div>
-    <script src="script.js"></script>
-    <script>
-        let gemstoneIndexToEdit = null;
 
-function loadGemstoneToEdit() {
-  const urlParams = new URLSearchParams(window.location.search);
-  
-  gemstoneIndexToEdit = parseInt(urlParams.get('index'));
-  console.log(gemstoneIndexToEdit)
 
-  if (gemstoneIndexToEdit !== null && !isNaN(gemstoneIndexToEdit)) {
-  console.log(data)
 
-    const gemstone = data[gemstoneIndexToEdit];
-    document.getElementById('edit-gemstone-name').value = gemstone.name;
-    document.getElementById('edit-gemstone-carats').value = gemstone.carats;
-    document.getElementById('edit-gemstone-price').value = gemstone.price;
-  } else {
-    alert('Invalid gemstone index.');
-  }
-}
+    <script>let gemstoneIdToEdit = null;
 
-function saveEditedGemstone() {
-  if (gemstoneIndexToEdit !== null) {
-    const name = document.getElementById('edit-gemstone-name').value;
-    const carats = parseFloat(document.getElementById('edit-gemstone-carats').value);
-    const price = parseFloat(document.getElementById('edit-gemstone-price').value);
-
-    if (!isNaN(carats) && !isNaN(price) && name) {
-      const editedGemstone = new Gemstone(name, carats, price);
-      data[gemstoneIndexToEdit] = editedGemstone;
-      localStorage.setItem('gemstones', JSON.stringify(data));
-
-      window.location.href = 'index.html';
-    } else {
-      alert('Invalid input. Please provide valid gemstone name, carats, and price.');
-    }
-  }
-}
-
-const saveEditedGemstoneBtn = document.getElementById('save-edited-gemstone');
-saveEditedGemstoneBtn.addEventListener('click', saveEditedGemstone);
-
-loadGemstoneToEdit();
+      function loadGemstoneToEdit() {
+        const urlParams = new URLSearchParams(window.location.search);
+        gemstoneIdToEdit = urlParams.get('id');
+      
+        if (gemstoneIdToEdit !== null) {
+          fetch(`http://localhost:5000/gemstones/${gemstoneIdToEdit}`)
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('edit-gemstone-name').value = data.gemstone.name;
+              document.getElementById('edit-gemstone-carats').value = data.gemstone.carats;
+              document.getElementById('edit-gemstone-price').value = data.gemstone.price;
+            })
+            .catch(error => console.error('Error loading gemstone to edit:', error));
+        } else {
+          alert('Invalid gemstone ID.');
+        }
+      }
+      
+      function saveEditedGemstone() {
+        const name = document.getElementById('edit-gemstone-name').value;
+        const carats = parseFloat(document.getElementById('edit-gemstone-carats').value);
+        const price = parseFloat(document.getElementById('edit-gemstone-price').value);
+      
+        if (!isNaN(carats) && !isNaN(price) && name) {
+          const editedGemstone = {
+            'name': name,
+            'carats': carats,
+            'price': price
+          };
+      
+          fetch(`http://localhost:5000/gemstones/${gemstoneIdToEdit}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(editedGemstone)
+          })
+            .then(response => response.json())
+            .then(data => {
+              window.location.href = 'main.html';
+            })
+            .catch(error => console.error('Error saving edited gemstone:', error));
+        } else {
+          alert('Invalid input. Please provide valid gemstone name, carats, and price.');
+        }
+      }
+      
+      loadGemstoneToEdit();
+      
 
     </script>
   </body>
