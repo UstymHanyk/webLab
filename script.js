@@ -1,11 +1,12 @@
 const main = document.getElementById('main');
 const sortBtn = document.getElementById('sort');
 const searchInput = document.getElementById('search');
-let gemstonesData = [];  // Store all gemstones
+let gemstonesData = [];  
 
 function updateDOM() {
   const searchTerm = searchInput.value.toLowerCase();
   const filteredGemstones = gemstonesData.filter(item => item.name.toLowerCase().includes(searchTerm));
+  // const totalSum = providedData.reduce((sum, item) => sum + item.price, 0);
 
   main.innerHTML = '<h2>Gemstone List</h2>';
 
@@ -18,7 +19,12 @@ function updateDOM() {
       <button class="remove-button" onclick="removeGemstone(${item.id})">Remove</button>
     `;
     main.appendChild(element);
-  });
+    // const totalSumElement = document.createElement('div');
+
+    // totalSumElement.innerHTML = `<strong>Total Sum of Prices: $${totalSum}</strong>`;
+    // main.appendChild(totalSumElement);
+
+  });  
 }
 
 function redirectToEditPage(gemstoneId) {

@@ -9,8 +9,8 @@
     <div class="container">
       <h1>Add a Gemstone</h1>
       <input type="text" id="add-gemstone-name" placeholder="Gemstone Name" />
-      <input type="number" id="add-gemstone-carats" placeholder="Carats" />
-      <input type="number" id="add-gemstone-price" placeholder="Price" />
+      <input type="number" id="add-gemstone-carats" placeholder="Carats" min="0" />
+      <input type="number" id="add-gemstone-price" placeholder="Price" min="0"/>
       <button id="save-new-gemstone" onclick="saveNewGemstone()">Save Gemstone</button>
     </div>
 
@@ -20,7 +20,7 @@
   const carats = parseFloat(document.getElementById('add-gemstone-carats').value);
   const price = parseFloat(document.getElementById('add-gemstone-price').value);
 
-  if (!isNaN(carats) && !isNaN(price) && name) {
+  if (!isNaN(carats) && carats >=0 && !isNaN(price) && price >=0 && name) {
     const newGemstone = {
       'name': name,
       'carats': carats,
@@ -44,5 +44,18 @@
   }
 }
     </script>
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+    </style>
   </body>
 </html>
