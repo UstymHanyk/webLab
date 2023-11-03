@@ -1,0 +1,95 @@
+.about-us {
+    padding: 40px;
+    margin: auto;
+    width: 90vw;
+    margin-bottom: 5rem;    
+  }
+  
+  .about-us h2{
+    font-size: 5rem;
+    line-height: 0.75;
+    text-align: center;
+    color:#212121;
+  }
+  
+  .about-us h2:hover{
+    color:white;
+  }
+  
+  .company-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+
+  
+  .underline-purple {
+
+    background-image: linear-gradient(to right, #4A00E0, #8E2DE2);
+    background-repeat: no-repeat;
+    background-size: 100% 10%;
+    background-position: 0 75%;
+    transition: all 0.25s ease-in;
+  }
+  .underline-purple:hover{
+    background-size: 100% 75%;
+
+  }
+  .underline-light_purple{
+    background-image:  linear-gradient(to right, #aaffa9, #11ffbd);
+    background-repeat: no-repeat;
+    background-size: 100% 10%;
+    background-position: 0 75%;
+    transition: all 0.25s ease-in;
+  }
+  .underline-light_purple:hover{
+    background-size: 100% 75%;
+  }
+  .about-us__container_wrapper{
+    display: flex;
+    gap:2rem;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+  .about-us__card{
+    border-radius: 2rem;
+    border: 3px solid #212121;
+    width: 15vw;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: flex-start;
+    background: rgba( 255, 255, 255, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 3px );
+  }
+  
+  .about-us__card:hover{
+    border-radius: 2rem;
+    background-color: #212121;   
+    color:white; 
+    transition: all 0.25s ease-in;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  }
+  .about-us__card__title{
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1;
+    font-family: 'Ramabhadra';
+
+  }
+  .about-us__card__text{
+    font-size: 1.25rem;
+    margin: 0;
+    line-height: 1.2;
+
+  }
+  .about-us__row{
+    display: flex;
+    width: 100%;
+  }
