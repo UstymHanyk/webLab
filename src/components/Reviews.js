@@ -200,6 +200,7 @@ const Reviews = () => {
           </div>
         </div>
       </div>
+      <buttton className="view-more-btn"> View more</buttton>
     </div>
   );
 };
