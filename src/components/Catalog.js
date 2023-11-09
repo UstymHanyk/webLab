@@ -112,30 +112,15 @@ const Catalog = () => {
         </select>
         <div>
           <label>Price Range: ${filters.price[0]} - ${filters.price[1]}</label>
-          <MultiRangeSlider
-            min={0}
-            max={1000}
-            values={filters.price}
-            onChange={(values) => handleFilterChange("price", values)}
-          />
+         
         </div>
         <div>
           <label>Karats Range: {filters.karats[0]} - {filters.karats[1]}</label>
-          <MultiRangeSlider
-            min={0}
-            max={10}
-            values={filters.karats}
-            onChange={(values) => handleFilterChange("karats", values)}
-          />
+          
         </div>
         <div>
           <label>Hardness Range: {filters.hardness[0]} - {filters.hardness[1]}</label>
-          <MultiRangeSlider
-            min={0}
-            max={10}
-            values={filters.hardness}
-            onChange={(values) => handleFilterChange("hardness", values)}
-          />
+         
         </div>
       </div>
 
