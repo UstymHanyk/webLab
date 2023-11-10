@@ -14,6 +14,8 @@ const Navbar = () => {
           <li className="navbar-item"><a href="/catalog">Catalog</a></li>
           <li className="navbar-item"><a href="/cart">Cart</a></li>
         </ul>
+        
+
       </nav>
     );
   };

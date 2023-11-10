@@ -1,0 +1,15 @@
+.search-input{
+    width: 8rem;
+    height: 2rem;
+    font-weight: 600;
+    border: 2px solid black;
+    margin-top: 0.3rem;
+    border-radius: 0.2rem;
+    box-sizing: border-box;
+  }
+  .search-image{
+    width: 1rem;
+    position: absolute;
+    right: 0.4rem;
+    top:2rem;
+  }

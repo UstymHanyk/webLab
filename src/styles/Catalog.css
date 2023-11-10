@@ -1,0 +1,145 @@
+.catalog__wrapper{
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 10rem);
+}
+.catalog__title{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    
+}
+
+.catalog__filters-container{
+  font-weight: 600;
+  display: flex;
+  background: rgba( 255, 255, 255, 0.7 );
+  box-shadow: 0 8px 32px 0 rgba( 255, 255, 255, 0.37 );
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  justify-content: space-evenly;
+  gap: 3rem;
+  padding: 1rem;
+  width: 60rem;
+  margin: auto;
+  margin-bottom: 2rem;
+
+}
+
+  .gemstones-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap:2rem;
+    margin-bottom:2.5rem;
+  }
+  
+.catalog__filters-container__filter-wrapper{
+  display:flex;
+  position: relative;
+  flex-direction:column;
+}
+.catalog__filters-container__filter-wrapper select{
+  width: 7rem;
+    height: 2rem;
+    box-sizing:border-box;
+    font-weight: 600;
+    border: 2px solid black;
+    margin-top: 0.3rem;
+    border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.gemstone-item img{
+  width: 100%;
+}
+.catalog__filters-container__filter-wrapper span span:nth-child(7):hover{
+  box-shadow: none !important;
+}
+.catalog__filters-container__filter-wrapper span span:nth-child(6) , .catalog__filters-container__filter-wrapper span span:nth-child(4){
+  font-weight:600 !important;
+}
+.catalog__filters-container__filter-wrapper span span:nth-child(8), .catalog__filters-container__filter-wrapper span span:nth-child(7){
+  width: 1rem !important;
+  height: 1rem !important;
+}
+.catalog__filters-container__filter-wrapper span span:nth-child(8):active, .catalog__filters-container__filter-wrapper span span:nth-child(7):active, 
+.catalog__filters-container__filter-wrapper span span:nth-child(8):hover, .catalog__filters-container__filter-wrapper span span:nth-child(7):hover{
+  box-shadow: 0 0 0 8px rgba( 255, 255, 255, 0.4 ) !important;
+}
+
+
+.gemstone-item:hover{
+box-shadow: 0 8px 32px 0 rgba( 255, 255, 255, 0.37 );
+background: rgba( 255, 255, 255, 0.8 );
+  
+}
+.gemstone-item{
+  width: 15rem;
+  transition: 0.2s all ease-in;
+  background: rgba( 255, 255, 255, 0.6 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-radius: 0.8rem;
+  box-sizing: border-box;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;   */
+}
+.gemstone-item-info{
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  /* border: 2px solid #000000; */
+  border-bottom-left-radius: 0.8em;
+  border-bottom-right-radius: 0.8em;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 1rem;
+}
+.gemstone-item-info p{
+  margin: 0;
+}
+.gemstone-item-info p:first-child{
+  margin-bottom: .5rem;
+  font-weight:  600;
+}
+.gemstone-item-info p span{
+  right: 1rem;
+  position: absolute;
+}
+.catalog__wrapper h2 {
+  margin-top: 7rem;
+  font-size: 5rem;
+  line-height: 0.75;
+  text-align: center;
+  color: #212121;
+}
+.no-gemstones-image-wrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  margin-bottom:2rem;
+}
+.no-gemstones-image-cover{
+  width: 20rem;
+}
+.no-gemstones-image-wrapper div{
+  background: rgba( 255, 255, 255, 0.5 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-radius: 0.8rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  font-weight: 500;
+}

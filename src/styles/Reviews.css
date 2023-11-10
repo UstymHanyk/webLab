@@ -131,6 +131,8 @@
     margin-top: 1.5rem;
     transition: all 0.1s ease-in;
     font-weight:700;
+    cursor: pointer;
+
   }
 
   .view-more-btn:hover{
