@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import {useParams} from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom"; // Import useLocation from react-router-dom
 import "../styles/ItemPage.css";
 import { gemstonesData } from './gemstonesData';
 import Gemstone from "./Gemstone"
@@ -7,11 +7,15 @@ import GradientAnimatedBackdrop from "./GradientAnimatedBackdrop";
 import Select from "./Select";
 import Input from "./Input";
 import ActionButton from "./ActionButton";
-const Item = () => {
-    const { id } = useParams();
-    const itemId = parseInt(id);
-    const gemstone = gemstonesData.find((gemstone) => gemstone.id === itemId);
 
+const Item = () => {
+    
+
+    const location = useLocation();
+    const gemstone = location.state.gemstone;
+    // const  state  = useLocation();
+    // const gemstone = state && state.gemstone;
+    console.log(gemstone)
     const [filters, setFilters] = useState({
         quantity: 1,
         shipping: "Nova Poshta"

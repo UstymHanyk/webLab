@@ -39,6 +39,17 @@ const Catalog = () => {
     });
   };
 
+  const [sortOption, setSortOption] = useState('price');
+  const [sortDirection, setSortDirection] = useState('asc');
+
+  const sortOptionsList = ['price','name','karats','hardness'];
+
+  const handleSortChange=(name, value)=>{
+    setSortOption(value);
+  }
+
+  let sortedGemstones = [...filteredGemstones];
+
   useEffect(() => {
     const filteredGemstones = gemstonesData.filter((gemstone) => {
       return (
@@ -53,7 +64,28 @@ const Catalog = () => {
       );
     });
     setFilteredGemstones(filteredGemstones);
-  }, [filters]);
+
+    
+    console.log(sortOption)
+  
+
+  // Sorting the gemstones based on the selected sortOption and sortDirection
+  filteredGemstones.sort((a, b) => {
+    const aValue = a[sortOption];
+    const bValue = b[sortOption];
+
+    if (sortDirection === 'asc') {
+      return aValue - bValue;
+    } else {
+      return bValue - aValue;
+    }
+  });
+
+
+  setFilteredGemstones(filteredGemstones);
+  }, [filters, sortOption]);
+
+
 
   return (
     <div className="catalog__wrapper">
@@ -63,8 +95,18 @@ const Catalog = () => {
       </h2>    
       <div className="catalog__filters-container">
         
-      <Select lbael="Type" value={filters.type} onChange={handleFilterChange} options={gemstoneOptions} />
+      <Select label="Type" value={filters.type} onChange={handleFilterChange} options={gemstoneOptions} />
             <SearchBar onChange={handleFilterChange}></SearchBar>
+
+          <div className="catalog__filters-container__filter-wrapper">
+            <Select
+              label="Sort By"
+              value={sortOption}
+              onChange={handleSortChange}
+              options={sortOptionsList}
+            />
+          </div>
+
           <div className="catalog__filters-container__filter-wrapper">
             <label>Price:</label>
             <RangeSlider
