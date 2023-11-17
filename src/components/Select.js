@@ -1,9 +1,9 @@
 import React from "react";
 
-const GemstoneTypeSelect = ({ value, onChange, options }) => {
+const Select = ({ label, value, onChange, options }) => {
     return (
       <div className="catalog__filters-container__filter-wrapper">
-        <label>Type:</label>
+        <label>{label}:</label>
         <select
           name="type"
           value={value}
@@ -20,4 +20,4 @@ const GemstoneTypeSelect = ({ value, onChange, options }) => {
   };
   
 
-export default GemstoneTypeSelect;
+export default Select;

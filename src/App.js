@@ -10,15 +10,17 @@ import FAQ from './components/FAQ';
 import Home from './components/Home';
 import Catalog from './components/Catalog';
 import Cart from './components/Cart';
+import ItemPage from "./components/ItemPage";
 
-function App() {
+function App() {  
   return (
     <div className="App">
     <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/catalog" element={<Catalog/>} />
+          <Route path="/item/:id" element={<ItemPage/>} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
         
