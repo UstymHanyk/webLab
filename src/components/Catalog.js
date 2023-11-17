@@ -113,8 +113,10 @@ const Catalog = () => {
     karats: [0, 20],
     hardness: [0, 10],
   });
+  const [selectedType, setSelectedType] = useState("");
 
   const [filteredGemstones, setFilteredGemstones] = useState([]);
+  const gemstoneOptions = ["All Types", "Diamond", "Sapphire", "Ruby", "Amethyst", "Emerald"];
 
   // Handle filter changes for gemstone type and multi-range sliders
   const handleFilterChange = (name, values) => {
@@ -155,7 +157,7 @@ const Catalog = () => {
       </h2>    
       <div className="catalog__filters-container">
         
-            <GemstoneTypeSelect value={filters.type} onChange={handleFilterChange}></GemstoneTypeSelect>
+      <GemstoneTypeSelect value={selectedType} onChange={handleFilterChange} options={gemstoneOptions} />
             <SearchBar onChange={handleFilterChange}></SearchBar>
           <div className="catalog__filters-container__filter-wrapper">
             <label>Price:</label>

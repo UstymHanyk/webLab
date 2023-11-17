@@ -2,7 +2,7 @@ import React from "react";
 import search from "../images/search.png";
 import "../styles/SearchBar.css";
 
-const SearchBar = (onChange) => {
+const SearchBar = ({ onChange }) => {
 
 
   return (

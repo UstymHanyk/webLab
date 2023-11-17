@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../images/logo_white.png';
+import {Link} from 'react-router-dom';
 
 import '../styles/Navbar.css'
 
@@ -10,9 +11,12 @@ const Navbar = () => {
         <img src={logo} alt="Gemstone Store Logo" className="logo-image" />
            {/* </div> */}
         <ul className="navbar-menu">
-          <li className="navbar-item"><a href="/">Home</a></li>
-          <li className="navbar-item"><a href="/catalog">Catalog</a></li>
-          <li className="navbar-item"><a href="/cart">Cart</a></li>
+          <li className="navbar-item"><Link to="/">Home</Link></li>
+          <li className="navbar-item">
+          <Link to="/catalog">Catalog</Link></li>
+          <li className="navbar-item">
+          <Link to="/cart">Cart</Link>
+         </li>
         </ul>
         
 
