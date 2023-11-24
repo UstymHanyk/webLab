@@ -124,11 +124,11 @@ const Catalog = () => {
     setFilteredGemstones(filteredGemstones);
   };
 
-  const [applyFilters, setApplyFilters] = useState(false); // State to manage filter application
+  const [applyFilters, setApplyFilters] = useState(false);
   useEffect( () =>  {
     if (applyFilters) {
       applyFiltersAndUpdate();
-      setApplyFilters(false); // Reset applyFilters state after applying filters
+      setApplyFilters(false);
     }
   }, [applyFilters]);
 

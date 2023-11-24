@@ -10,9 +10,22 @@ import ActionButton from "./ActionButton";
 import { useDispatch } from 'react-redux';
 import {addToCart} from "../redux/actions";
 
+import diamondImg from '../images/gemstones/diamond.png';
+import sapphireImg from '../images/gemstones/sapphire.png';
+import rubyImg from '../images/gemstones/ruby.png';
+import emeraldImg from '../images/gemstones/emerald.png';
+import amethystImg from '../images/gemstones/amethyst.png';
+
 const Item = () => {
     const dispatch = useDispatch();
-
+    const gemstoneImages = {
+      Diamond: diamondImg,
+      Sapphire: sapphireImg,
+      Ruby: rubyImg,
+      Emerald: emeraldImg,
+      Amethyst: amethystImg,
+    };
+  
 
     const location = useLocation();
     const gemstone = location.state.gemstone;
@@ -21,20 +34,21 @@ const Item = () => {
     console.log(gemstone)
     const [filters, setFilters] = useState({
         quantity: 1,
-        shipping: "Nova Poshta"
+        certificateType: "IMFB"
       });
 
-    const shippingOptions = ["Nova Poshta", "Amazon Delivery", "Uber"];
+    const certificateTypeOptions = ["IMFB", "VCA", "CRA"];
     const handleAddToCart = () => {
-        dispatch(addToCart(gemstone, filters.quantity, filters.shipping));
+        dispatch(addToCart(gemstone, filters.quantity, filters.certificateType));
       };
     return (
+      
         <div className="item__wrapper">
         <GradientAnimatedBackdrop></GradientAnimatedBackdrop>
     
         <div className="item__container">
         <div className="item__image">
-            <img src={gemstone.image}></img>
+            <img src={gemstoneImages[gemstone.image]}></img>
         </div>            
         <div className="item__info">
 
@@ -48,7 +62,7 @@ const Item = () => {
         
         <div className="buttons__wrapper">
         
-        <Select label="Shipping" value={filters.shipping} onChange={setFilters} options={shippingOptions} />
+        <Select label="Certificate type" name="certificateType" value={filters.certificateType} onChange={setFilters} options={certificateTypeOptions} />
 
         <Input label="Quantity" value={filters.quantity} onChange={setFilters} placeholder=""></Input>
         

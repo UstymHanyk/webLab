@@ -29,7 +29,7 @@ const Gemstone = ({ id, name, image, price, karats, hardness }) => {
         <p>Price: <span>${price}</span></p>
         <p>Karats: <span>{karats}</span></p>
         <p>Hardness: <span>{hardness}</span></p>
-        <Link to={`/item/${id}`} state={{ gemstone: { id, image: gemstoneImages[image], name, price, karats, hardness } }} className="view_details">
+        <Link to={`/item/${id}`} state={{ gemstone: { id, image, name, price, karats, hardness } }} className="view_details">
 
         {/* <Link onClick={handleLinkToItem} className="view_details"> */}
                 View Details

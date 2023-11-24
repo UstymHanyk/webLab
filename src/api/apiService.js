@@ -20,21 +20,20 @@ export const fetchAllGemstones = () => {
 };
 
 export const fetchFilteredGemstones = (filters) => {
-  // Example: filters could be an object containing filter parameters
   const { name, type, price, karats, hardness, sort_by, sort_direction } = filters;
   const params = {
     name,
     type,
-    price_min: price[0], // Pass min price as 'price_min'
-    price_max: price[1], // Pass max price as 'price_max'
-    karats_min: karats[0], // Pass min karats as 'karats_min'
-    karats_max: karats[1], // Pass max karats as 'karats_max'
-    hardness_min: hardness[0], // Pass min hardness as 'hardness_min'
-    hardness_max: hardness[1], // Pass max hardness as 'hardness_max'
+    price_min: price[0],
+    price_max: price[1],
+    karats_min: karats[0],
+    karats_max: karats[1],
+    hardness_min: hardness[0],
+    hardness_max: hardness[1],
     sort_by,
     sort_direction,
   };
-  // const params = new URLSearchParams(filters).toString();
+
   console.log(params)
   return apiService.get('/filtered',{params})
     .then(response => {

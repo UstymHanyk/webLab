@@ -205,3 +205,28 @@ background: rgba( 255, 255, 255, 0.8 );
   padding: 1rem;
   font-weight: 500;
 }
+.total{
+    display: flex;
+    background: rgba( 255, 255, 255, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 255, 255, 255, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    justify-content: space-evenly;
+    gap: 3rem;
+    padding: 1rem;
+    width: 30rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+.total h3{
+  margin:0;
+}
+.price_cont{
+  display: flex;
+}
+.total a{
+  margin: 0;
+}
