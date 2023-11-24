@@ -7,22 +7,27 @@ import GradientAnimatedBackdrop from "./GradientAnimatedBackdrop";
 import Select from "./Select";
 import Input from "./Input";
 import ActionButton from "./ActionButton";
+import { useDispatch } from 'react-redux';
+import {addToCart} from "../redux/actions";
 
 const Item = () => {
-    
+    const dispatch = useDispatch();
+
 
     const location = useLocation();
     const gemstone = location.state.gemstone;
     // const  state  = useLocation();
     // const gemstone = state && state.gemstone;
-    // console.log(gemstone)
+    console.log(gemstone)
     const [filters, setFilters] = useState({
         quantity: 1,
         shipping: "Nova Poshta"
       });
 
     const shippingOptions = ["Nova Poshta", "Amazon Delivery", "Uber"];
-
+    const handleAddToCart = () => {
+        dispatch(addToCart(gemstone, filters.quantity, filters.shipping));
+      };
     return (
         <div className="item__wrapper">
         <GradientAnimatedBackdrop></GradientAnimatedBackdrop>
@@ -52,7 +57,7 @@ const Item = () => {
         <div className="buttons__wrapper">
         
         <ActionButton text="Go back" linkHref="/catalog"></ActionButton>
-        <ActionButton text="Add to cart" linkHref="/cart"></ActionButton>
+        <ActionButton text="Add to cart" onClick={handleAddToCart} linkHref="/cart"></ActionButton>
         
         </div>
               </div>
