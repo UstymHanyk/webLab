@@ -19,14 +19,18 @@ import amethystImg from "../images/gemstones/amethyst.png"
 const Catalog = () => {
 
   const [gemstonesData, setGemstonesData]=useState([]); 
+  const [loading, setLoading] = useState(false); // New loading state
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true); // Set loading state to true while fetching data
+
         const gemstonesFromApi = await fetchAllGemstones(); // Fetch all gemstones
         setGemstonesData(gemstonesFromApi); // Set the fetched gemstones to state
         console.log("First fetch")
         console.log(gemstonesFromApi)
+        setLoading(false); // Set loading state to false after fetching data
 
       } catch (error) {
         console.error("Error fetching gemstones:", error);
@@ -182,7 +186,13 @@ const Catalog = () => {
 
         </div>
       {/* Gemstones Grid */}
-      {gemstonesData.length > 0 ? (
+      {loading ? (
+        <div className="spinner-wrapper">
+          {/* Spinner animation */}
+          <div className="spinner"></div>
+        </div>
+      ) : (
+      gemstonesData.length > 0 ? (
       <div className="gemstones-grid">
         {gemstonesData.map((gemstone) => (
            <Gemstone
@@ -205,7 +215,8 @@ const Catalog = () => {
               No gemstones fit your criteria
             </div>
           </div>
-        )}
+        )
+      )}
     </div>
   );
 };
