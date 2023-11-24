@@ -7,7 +7,6 @@ const RangeSlider = ({ min, max, onRangeChange }) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(value)
     onRangeChange(newValue);
   };
 

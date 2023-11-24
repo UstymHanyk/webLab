@@ -6,11 +6,35 @@ import GradientAnimatedBackdrop from "./GradientAnimatedBackdrop";
 import Select from "./Select";
 import "../styles/Catalog.css";
 import Gemstone from "./Gemstone";
-import { gemstonesData } from './gemstonesData';
+// import { gemstonesData } from './gemstonesData';
+import { fetchAllGemstones,fetchFilteredGemstones } from '../api/apiService';
+import diamondImg from "../images/gemstones/diamond.png";
+import sapphireImg from "../images/gemstones/sapphire.png";
+import rubyImg from "../images/gemstones/ruby.png";
+import emeraldImg from "../images/gemstones/emerald.png"
+import amethystImg from "../images/gemstones/amethyst.png"
 
 
 
 const Catalog = () => {
+
+  const [gemstonesData, setGemstonesData]=useState([]); 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const gemstonesFromApi = await fetchAllGemstones(); // Fetch all gemstones
+        setGemstonesData(gemstonesFromApi); // Set the fetched gemstones to state
+        console.log("First fetch")
+        console.log(gemstonesFromApi)
+
+      } catch (error) {
+        console.error("Error fetching gemstones:", error);
+      }
+    };
+
+    fetchData(); // Fetch all gemstones when the component mounts
+  }, []);
 
   const [filters, setFilters] = useState({
     name: "",
@@ -18,72 +42,91 @@ const Catalog = () => {
     price: [0, 10000],
     karats: [0, 20],
     hardness: [0, 10],
-  });
+    sort_by: 'price', 
+    sort_direction: 'asc', 
+  });  
 
   const [filteredGemstones, setFilteredGemstones] = useState([]);
   const gemstoneOptions = ["All Types", "Diamond", "Sapphire", "Ruby", "Amethyst", "Emerald"];
 
   // Handle filter changes for gemstone type and multi-range sliders
   const handleFilterChange = (name, values) => {
-    console.log(values)
     setFilters({
       ...filters,
       [name]: values,
     });
   };
 
-  const handleRangeChange = (name, values) => {
-    setFilters({
-      ...filters,
-      [name]: values,
-    });
-  };
-
-  const [sortOption, setSortOption] = useState('price');
-  const [sortDirection, setSortDirection] = useState('asc');
+  // const [sortOption, setSortOption] = useState('price');
+  // const [sortDirection, setSortDirection] = useState('asc');
 
   const sortOptionsList = ['price','name','karats','hardness'];
 
-  const handleSortChange=(name, value)=>{
-    setSortOption(value);
-  }
+  // const handleSortChange=(name, value)=>{
+  //   setSortOption(value);
+  // }
 
-  let sortedGemstones = [...filteredGemstones];
+  // let sortedGemstones = [...filteredGemstones];
 
-  useEffect(() => {
-    const filteredGemstones = gemstonesData.filter((gemstone) => {
-      return (
-        (filters.name === "" || gemstone.name.toLocaleLowerCase().includes(filters.name.toLocaleLowerCase())) &&
-        (filters.type === "All Types" || gemstone.type === filters.type) &&
-        gemstone.price >= filters.price[0] &&
-        gemstone.price <= filters.price[1] &&
-        gemstone.karats >= filters.karats[0] &&
-        gemstone.karats <= filters.karats[1] &&
-        gemstone.hardness >= filters.hardness[0] &&
-        gemstone.hardness <= filters.hardness[1]
-      );
-    });
-    setFilteredGemstones(filteredGemstones);
+  // useEffect(() => {
+  //   const filteredGemstones = gemstonesData.filter((gemstone) => {
+  //     return (
+  //       (filters.name === "" || gemstone.name.toLocaleLowerCase().includes(filters.name.toLocaleLowerCase())) &&
+  //       (filters.type === "All Types" || gemstone.type === filters.type) &&
+  //       gemstone.price >= filters.price[0] &&
+  //       gemstone.price <= filters.price[1] &&
+  //       gemstone.karats >= filters.karats[0] &&
+  //       gemstone.karats <= filters.karats[1] &&
+  //       gemstone.hardness >= filters.hardness[0] &&
+  //       gemstone.hardness <= filters.hardness[1]
+  //     );
+  //   });
+  //   setFilteredGemstones(filteredGemstones);
 
     
-    console.log(sortOption)
+  //   console.log(sortOption)
   
 
-  // Sorting the gemstones based on the selected sortOption and sortDirection
-  filteredGemstones.sort((a, b) => {
-    const aValue = a[sortOption];
-    const bValue = b[sortOption];
+  // // Sorting the gemstones based on the selected sortOption and sortDirection
+  // filteredGemstones.sort((a, b) => {
+  //   const aValue = a[sortOption];
+  //   const bValue = b[sortOption];
 
-    if (sortDirection === 'asc') {
-      return aValue - bValue;
-    } else {
-      return bValue - aValue;
+  //   if (sortDirection === 'asc') {
+  //     return aValue - bValue;
+  //   } else {
+  //     return bValue - aValue;
+  //   }
+  // });
+
+
+  // setFilteredGemstones(filteredGemstones);
+  // }, [filters, sortOption]);
+
+  const handleApplyFilters = () => {
+    setApplyFilters(true); // Trigger filters application
+  };
+
+  
+  const applyFiltersAndUpdate = async () => {
+    try {
+      const filteredGemstones = await fetchFilteredGemstones(filters);
+      console.log("update filters",filteredGemstones)
+      setGemstonesData(filteredGemstones);
+    } catch (error) {
+      console.error("Error fetching filtered gemstones:", error);
     }
-  });
 
+    setFilteredGemstones(filteredGemstones);
+  };
 
-  setFilteredGemstones(filteredGemstones);
-  }, [filters, sortOption]);
+  const [applyFilters, setApplyFilters] = useState(false); // State to manage filter application
+  useEffect( () =>  {
+    if (applyFilters) {
+      applyFiltersAndUpdate();
+      setApplyFilters(false); // Reset applyFilters state after applying filters
+    }
+  }, [applyFilters]);
 
 
 
@@ -94,15 +137,16 @@ const Catalog = () => {
         <span className="underline-light_purple">Our Gems</span>
       </h2>    
       <div className="catalog__filters-container">
-        
-      <Select label="Type" value={filters.type} onChange={handleFilterChange} options={gemstoneOptions} />
+
+      <Select name="type" label="Type" value={filters.type} onChange={handleFilterChange} options={gemstoneOptions} />
             <SearchBar onChange={handleFilterChange}></SearchBar>
 
           <div className="catalog__filters-container__filter-wrapper">
             <Select
+              name="sort_by"
               label="Sort By"
-              value={sortOption}
-              onChange={handleSortChange}
+              value={filters.sort_by}
+              onChange={handleFilterChange}
               options={sortOptionsList}
             />
           </div>
@@ -131,11 +175,16 @@ const Catalog = () => {
             onRangeChange={(values) => handleFilterChange('hardness', values)}
           />
           </div>
+          <div className="catalog__filters-container__filter-wrapper">
+          <br/>
+          <button onClick={handleApplyFilters} className="apply_button">Apply Filters</button>
+          </div>
+
         </div>
       {/* Gemstones Grid */}
-      {filteredGemstones.length > 0 ? (
+      {gemstonesData.length > 0 ? (
       <div className="gemstones-grid">
-        {filteredGemstones.map((gemstone) => (
+        {gemstonesData.map((gemstone) => (
            <Gemstone
            key={gemstone.id}
            id={gemstone.id}

@@ -15,7 +15,7 @@ const Item = () => {
     const gemstone = location.state.gemstone;
     // const  state  = useLocation();
     // const gemstone = state && state.gemstone;
-    console.log(gemstone)
+    // console.log(gemstone)
     const [filters, setFilters] = useState({
         quantity: 1,
         shipping: "Nova Poshta"
